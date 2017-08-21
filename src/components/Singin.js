@@ -12,9 +12,9 @@ export default class App extends React.Component {
                 fetch(data.branches_url.split('{')[0]).then(
                     response => response.json()
                 ).then(
-                    data => console.log(data)
-                )
-                console.log( fetch(data.contributors_url).then(response => response.json().then(japko => console.log (japko))))
+                    data => fetch(data.contributors_url).then(response => response.json().then(data => success(data)))
+                ).then(console.log(data))
+
             }
         )
 
