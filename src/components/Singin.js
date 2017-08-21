@@ -1,6 +1,29 @@
 import React from 'react'
 
-export default class App extends React.Component {
+
+
+import { connect } from 'react-redux'
+
+import './App.css'
+
+export default connect(
+    state => ({
+        contributors: state.contributors
+    }),
+    dispatch => ({
+        success: data => dispatch({
+            type: 'contributors/FETCH__SUCCESS',
+            data: data
+        })
+
+    })
+)
+
+(class Singin extends React.Component {
+
+
+
+
 
     componentDidMount() {
         fetch(
@@ -9,11 +32,8 @@ export default class App extends React.Component {
             response => response.json()
         ).then(
             data => {
-                fetch(data.branches_url.split('{')[0]).then(
-                    response => response.json()
-                ).then(
-                    data => fetch(data.contributors_url).then(response => response.json().then(data => success(data)))
-                ).then(console.log(data))
+                fetch(data.contributors_url).then(response => response.json().then(data => this.props.success(data)))
+
 
             }
         )
@@ -22,11 +42,19 @@ export default class App extends React.Component {
     }
 
     render() {
+
+       const contributors = this.props.contributors.data
         return (
             <div className="App">
                 <a href={'http://github.com/login/oauth/authorize?' +
                 'client_id=' + '9f13dc502b256fcebd4f'}>Sing in with your GitHub account</a>
+
+                { contributors === null ? 'Fetching' : contributors.map(contributors => <p>{contributors.login}</p>)}
             </div>
+
+
+
+
         )
     }
-}
+})
