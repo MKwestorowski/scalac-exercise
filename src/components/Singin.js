@@ -31,8 +31,10 @@ export default connect(
         ).then(
             response => response.json()
         ).then(
-            data => {
-                fetch(data.contributors_url).then(response => response.json().then(data => this.props.success(data)))
+            data => {this.props.success(data);
+                fetch(data.contributors_url).then(
+                    response => response.json().then(
+                        data => this.props.success(data)))
 
 
             }
@@ -43,13 +45,11 @@ export default connect(
 
     render() {
 
-       const contributors = this.props.contributors.data
+
         return (
             <div className="App">
                 <a href={'http://github.com/login/oauth/authorize?' +
-                'client_id=' + '9f13dc502b256fcebd4f'}>Sing in with your GitHub account</a>
-
-                { contributors === null ? 'Fetching' : contributors.map(contributors => <p>{contributors.login}</p>)}
+                'client_id=' + '9f13dc502b256fcebd4f'}>To use our app sing in with your GitHub Account</a>
             </div>
 
 

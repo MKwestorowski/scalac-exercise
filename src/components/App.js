@@ -6,7 +6,8 @@ import {
 
 
 import Singin from './Singin'
-
+import ContributorList from './ContributorList'
+import ContributeProfile from './ContributeProfile'
 import './App.css';
 
 
@@ -17,8 +18,9 @@ class App extends React.Component {
 
 
                     <div className="white">
-                        {/*<Route exact path="/" component={Homepage}/>*/}
-                        <Route path="/" component={Singin}/>
+                        <Route exact path="/" component={Singin}/>
+                        <Route path="/contributorlist" component={ContributorList}/>
+                        <Route path="/contributeprofile" component={ContributeProfile}/>
                     </div>
 
             </Router>
