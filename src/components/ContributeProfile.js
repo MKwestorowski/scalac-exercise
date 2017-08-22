@@ -41,12 +41,12 @@ export default connect(
     render() {
 
 const contributor = this.props.contributorID
-const contributors = this.props.contributors
+const contributors = this.props.contributors.data
 
 
         return (
             <div className="App">
-                {}
+                {contributor === null? 'Fetching' : contributors.map()}
             </div>
 
 
