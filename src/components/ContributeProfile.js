@@ -8,7 +8,7 @@ import './App.css'
 
 export default connect(
     state => ({
-        contributorID: state.contributorID,
+        contributorID: state.contributorID.contributorID.contributorID,
         contributors: state.contributors
 
     })
@@ -42,11 +42,12 @@ export default connect(
 
 const contributor = this.props.contributorID
 const contributors = this.props.contributors.data
+        console.log(contributor)
 
 
         return (
             <div className="App">
-                {contributor === null? 'Fetching' : contributors.map()}
+                {contributor === null? 'Fetching' : contributors.map(each => each.id === contributor? <p>{each.login}</p> : null )}
             </div>
 
 
