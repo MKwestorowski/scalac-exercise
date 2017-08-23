@@ -1,8 +1,7 @@
 import React from 'react'
 
 
-
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 import './App.css'
 
@@ -22,16 +21,14 @@ export default connect(
 (class Singin extends React.Component {
 
 
-
-
-
     componentDidMount() {
         fetch(
             'https://api.github.com/repos/angular/angular'
         ).then(
             response => response.json()
         ).then(
-            data => {this.props.success(data); console.log(data);
+            data => {
+                this.props.success(data);
                 fetch(data.contributors_url).then(
                     response => response.json().then(
                         data => this.props.success(data)))

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 
 export default connect(
@@ -15,11 +15,12 @@ export default connect(
             data: data
         }),
         contributorProfile: contributorLogin => dispatch({
-                type: 'PROFILE__SUCCESS',
+            type: 'PROFILE__SUCCESS',
             contributorLogin: contributorLogin
 
-    }) })
-)( class Singin extends React.Component {
+        })
+    })
+)(class Singin extends React.Component {
 
 
     render() {
@@ -30,7 +31,10 @@ export default connect(
                 { contributors === null ?
                     'Fetching' :
                     contributors.map(
-                    eachContributor => <div><Link to={'/contributeprofile'} onClick={() => contributorProfile(eachContributor)} key={eachContributor.id}>{eachContributor.login}</Link> <img src={eachContributor.avatar_url} alt=""/> </div>)}
+                        eachContributor => <div><Link to={'/contributeprofile'}
+                                                      onClick={() => contributorProfile(eachContributor)}
+                                                      key={eachContributor.id}>{eachContributor.login}</Link> <img
+                            src={eachContributor.avatar_url} alt=""/></div>)}
             </div>
 
 
