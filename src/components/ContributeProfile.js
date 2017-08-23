@@ -65,6 +65,7 @@ export default connect(
             <div className="App">
                 {contributor.login === null ? 'Fetching' : contributors.map(each => each.login === contributor.login ?
                     <div><p>{each.login}</p>
+                        <img src={each.avatar_url} alt="avatar"/>
                         <a href={each.html_url}>Take a look on GitHub</a>
                         <p>Count of contributors {each.contributions}</p>
                         <li>
