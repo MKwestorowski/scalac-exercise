@@ -14,9 +14,9 @@ export default connect(
             type: 'contributors/FETCH__SUCCESS',
             data: data
         }),
-        contributorProfile: contributorID => dispatch({
+        contributorProfile: contributorLogin => dispatch({
                 type: 'PROFILE__SUCCESS',
-                contributorID: contributorID
+            contributorLogin: contributorLogin
 
     }) })
 )( class Singin extends React.Component {
@@ -30,7 +30,7 @@ export default connect(
                 { contributors === null ?
                     'Fetching' :
                     contributors.map(
-                    eachContributor => <div><Link to={'/contributeprofile'} onClick={() => contributorProfile(eachContributor.id)} key={eachContributor.id}>{eachContributor.login}</Link> <img src={eachContributor.avatar_url} alt=""/> </div>)}
+                    eachContributor => <div><Link to={'/contributeprofile'} onClick={() => contributorProfile(eachContributor)} key={eachContributor.id}>{eachContributor.login}</Link> <img src={eachContributor.avatar_url} alt=""/> </div>)}
             </div>
 
 

@@ -31,7 +31,7 @@ export default connect(
         ).then(
             response => response.json()
         ).then(
-            data => {this.props.success(data);
+            data => {this.props.success(data); console.log(data);
                 fetch(data.contributors_url).then(
                     response => response.json().then(
                         data => this.props.success(data)))

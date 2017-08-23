@@ -1,6 +1,6 @@
 
     const initialState = {
-        contributorID: null,
+        contributorLogin: null,
     }
 
     export default (state = initialState, action) => {
@@ -9,7 +9,7 @@
             case `PROFILE__SUCCESS`:
                 return {
                     ...state,
-                    contributorID: action
+                    contributorLogin: action
                 }
             default:
                 return state
