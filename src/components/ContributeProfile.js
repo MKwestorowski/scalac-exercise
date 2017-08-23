@@ -8,8 +8,16 @@ import './App.css'
 
 export default connect(
     state => ({
+        selectedData: state.selectingData.data.data,
         contributorLogin: state.contributorLogin.contributorLogin.contributorLogin,
         contributors: state.contributors
+
+    }),
+    dispatch => ({
+        selectingData: data => dispatch({
+            type: 'SELECTED__DATA',
+            data: data
+        })
 
     })
 )
@@ -32,10 +40,8 @@ export default connect(
 
         const contributor = this.props.contributorLogin
         const contributors = this.props.contributors.data
-        console.log(contributors)
-
-
-        const login = contributor.id === null ? 'Fetching' : contributors.map(each => each.id === contributor.id ? each.login : null)
+        const selectingData = this.props.selectingData
+        const selectedData = this.props.selectedData
 
 
         const options = [
@@ -51,7 +57,7 @@ export default connect(
             ).then(
                 response => response.json()
             ).then(
-                data => console.log(data)
+                data => selectingData(data)
             )
         }
 
@@ -67,9 +73,8 @@ export default connect(
                             </ul>
                         </li>
                     </div> : null)}
-
-
                 <Select name="form-field-name" value="one" options={options} onChange={logChange}/>
+                <div>{selectedData !== null ? selectedData.map(e => <p>{e.name}</p>) : null }</div>
 
             </div>
 
