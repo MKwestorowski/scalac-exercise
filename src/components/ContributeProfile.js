@@ -62,22 +62,40 @@ export default connect(
         }
 
         return (
-            <div className="App">
-                {contributor.login === null ? 'Fetching' : contributors.map(each => each.login === contributor.login ?
-                    <div><p>{each.login}</p>
-                        <img src={each.avatar_url} alt="avatar"/>
-                        <a href={each.html_url}>Take a look on GitHub</a>
-                        <p>Count of contributors {each.contributions}</p>
-                        <li>
-                            <ul>
-
-                            </ul>
-                        </li>
-                    </div> : null)}
-                <Select name="form-field-name" value="one" options={options} onChange={logChange}/>
+            <div>
+                <div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Login</th>
+                            <th>
+                                Avatar
+                            </th>
+                            <th onClick={this.handleSortingToggle}>
+                                Count contributors
+                            </th>
+                            <th>Choose</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            contributor.login === null ? 'Fetching' : contributors.map(each => each.login === contributor.login ?
+                                <tr>
+                                    <td>{each.login}</td>
+                                    <td><img src={each.avatar_url} alt="avatar"/></td>
+                                    <td>{each.contributions}</td>
+                                    <td><Select name="form-field-name" value="one" options={options} onChange={logChange}/></td>
+                                </tr> : null)
+                        }
+                        </tbody>
+                    </table>
+                </div>
                 <div>{selectedData !== null ? selectedData.map(e => <p>{e.name}</p>) : null }</div>
-
             </div>
+
+
+
+
 
 
 
