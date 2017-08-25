@@ -25,6 +25,13 @@ export default connect(
 (class Singin extends React.Component {
 
 
+    constructor(props, context) {
+        super(props, context)
+        this.state = {
+           labelName : null
+        };
+    }
+
     componentDidMount() {
         const contributor = this.props.contributorLogin
         fetch(
@@ -42,15 +49,6 @@ export default connect(
         const contributors = this.props.contributors.data
         const selectingData = this.props.selectingData
         const selectedData = this.props.selectedData
-
-
-        const sortingMarks = {
-            'DESC': <span>&#8595;</span>,
-            'ASC': <span>&#8593;</span>
-        }
-        const sortingMark = sortingMarks[this.state.sortingOrder] || null
-
-
         const options = [
             {value: `https://api.github.com/users/${contributor.login}/orgs`, label: 'Organisations'},
             {value: `https://api.github.com/users/${contributor.login}/repos`, label: 'Repositories'},
@@ -58,29 +56,43 @@ export default connect(
             {value: `https://api.github.com/users/${contributor.login}/subscriptions`, label: 'Subscriptions'}
         ];
 
+
         function logChange(val) {
-            fetch(
-                val.value
-            ).then(
-                response => response.json()
-            ).then(
-                data => selectingData(data)
-            )
+
+
+
+
+            this.setState({
+                labelName: val.label
+            })
+
+
+
+
         }
 
+        logChange = (val) =>  {fetch(
+            val.value
+        ).then(
+            response => response.json()
+        ).then(
+            data => selectingData(data)
+        ), this.setState({
+            labelName: val.label
+        })}
+
         return (
-            <div>np
+            <div>
                 <div>
-                    <table>
+                    <table className="table table-striped">
                         <thead>
                         <tr>
                             <th>Login</th>
                             <th>
                                 Avatar
                             </th>
-                            <th onClick={this.handleSortingToggle}>
+                            <th>
                                 Count contributors
-                                {sortingMark}
                             </th>
                             <th>Choose</th>
                         </tr>
@@ -90,7 +102,7 @@ export default connect(
                             contributor.login === null ? 'Fetching' : contributors.map(each => each.login === contributor.login ?
                                 <tr>
                                     <td>{each.login}</td>
-                                    <td><img src={each.avatar_url} alt="avatar"/></td>
+                                    <td><img src={each.avatar_url} className="avatar img-thumbnail" alt="avatar"/></td>
                                     <td>{each.contributions}</td>
                                     <td><Select name="form-field-name" value="one" options={options}
                                                 onChange={logChange}/></td>
@@ -99,7 +111,19 @@ export default connect(
                         </tbody>
                     </table>
                 </div>
-                <div>{selectedData !== null ? selectedData.map(e => <p>{e.name}</p>) : null }</div>
+
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th>{this.state.labelName === null ? 'You must choose category' : this.state.labelName}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td className="">{selectedData !== null ? selectedData.map(e => <p>{e.name}</p>) : null }</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
 

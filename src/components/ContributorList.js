@@ -62,7 +62,7 @@ export default connect(
         return (
 
             <div>
-                <table>
+                <table className="table table-hover">
                     <thead>
                     <tr>
                         <th>Login</th>
@@ -71,7 +71,7 @@ export default connect(
                         </th>
                         <th onClick={this.handleSortingToggle}>
                             Count contributors
-                            {sortingMark}gi
+                            {sortingMark}
                         </th>
                     </tr>
                     </thead>
@@ -81,12 +81,12 @@ export default connect(
                             'Fetching' :
                             preparedContributors.map(
                                 eachContributor => (
-                                    <tr key={eachContributor.id}>
+                                    <tr scope="row" key={eachContributor.id}>
                                         <td><Link to={'/contributeprofile'}
                                                   onClick={() => contributorProfile(eachContributor)}
                                                   key={eachContributor.id}>{eachContributor.login}</Link></td>
                                         <td><img
-                                            src={eachContributor.avatar_url} alt=""/></td>
+                                            src={eachContributor.avatar_url} className="img-thumbnail avatar img-fluid" alt=""/></td>
                                         <td>{eachContributor.contributions}</td>
                                     </tr>
                                 )
