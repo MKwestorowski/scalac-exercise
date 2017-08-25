@@ -92,7 +92,8 @@ export default connect(
                                     <td>{each.login}</td>
                                     <td><img src={each.avatar_url} alt="avatar"/></td>
                                     <td>{each.contributions}</td>
-                                    <td><Select name="form-field-name" value="one" options={options} onChange={logChange}/></td>
+                                    <td><Select name="form-field-name" value="one" options={options}
+                                                onChange={logChange}/></td>
                                 </tr> : null)
                         }
                         </tbody>

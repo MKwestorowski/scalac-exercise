@@ -44,7 +44,7 @@ export default connect(
         }
         const sortingMark = sortingMarks[this.state.sortingOrder] || null
 
-const contributorsVariants =  {
+        const contributorsVariants = {
             'DESC': () => contributors.slice().sort(
                 (a, b) => b.contributions - a.contributions
             ),
@@ -61,40 +61,40 @@ const contributorsVariants =  {
         )()
         return (
 
-<div>
-            <table>
-            <thead>
-            <tr>
-                <th>Login</th>
-                <th>
-                    Avatar
-                </th>
-                <th onClick={this.handleSortingToggle}>
-                    Count contributors
-                    {sortingMark}gi
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {
-                preparedContributors === null ?
-                    'Fetching' :
-                    preparedContributors.map(
-                        eachContributor => (
-                            <tr key={eachContributor.id}>
-                                <td><Link to={'/contributeprofile'}
-                                          onClick={() => contributorProfile(eachContributor)}
-                                          key={eachContributor.id}>{eachContributor.login}</Link></td>
-                                <td><img
-                                    src={eachContributor.avatar_url} alt=""/></td>
-                                <td>{eachContributor.contributions}</td>
-                            </tr>
-                        )
-                    )
-            }
-            </tbody>
-        </table>
-</div>
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Login</th>
+                        <th>
+                            Avatar
+                        </th>
+                        <th onClick={this.handleSortingToggle}>
+                            Count contributors
+                            {sortingMark}gi
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        preparedContributors === null ?
+                            'Fetching' :
+                            preparedContributors.map(
+                                eachContributor => (
+                                    <tr key={eachContributor.id}>
+                                        <td><Link to={'/contributeprofile'}
+                                                  onClick={() => contributorProfile(eachContributor)}
+                                                  key={eachContributor.id}>{eachContributor.login}</Link></td>
+                                        <td><img
+                                            src={eachContributor.avatar_url} alt=""/></td>
+                                        <td>{eachContributor.contributions}</td>
+                                    </tr>
+                                )
+                            )
+                    }
+                    </tbody>
+                </table>
+            </div>
 
 
 
