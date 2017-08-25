@@ -44,6 +44,13 @@ export default connect(
         const selectedData = this.props.selectedData
 
 
+        const sortingMarks = {
+            'DESC': <span>&#8595;</span>,
+            'ASC': <span>&#8593;</span>
+        }
+        const sortingMark = sortingMarks[this.state.sortingOrder] || null
+
+
         const options = [
             {value: `https://api.github.com/users/${contributor.login}/orgs`, label: 'Organisations'},
             {value: `https://api.github.com/users/${contributor.login}/repos`, label: 'Repositories'},
@@ -62,7 +69,7 @@ export default connect(
         }
 
         return (
-            <div>
+            <div>np
                 <div>
                     <table>
                         <thead>
@@ -73,6 +80,7 @@ export default connect(
                             </th>
                             <th onClick={this.handleSortingToggle}>
                                 Count contributors
+                                {sortingMark}
                             </th>
                             <th>Choose</th>
                         </tr>

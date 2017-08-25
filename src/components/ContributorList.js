@@ -38,6 +38,12 @@ export default connect(
         const contributors = this.props.contributors.data
         const contributorProfile = this.props.contributorProfile
 
+        const sortingMarks = {
+            'DESC': <span>&#8595;</span>,
+            'ASC': <span>&#8593;</span>
+        }
+        const sortingMark = sortingMarks[this.state.sortingOrder] || null
+
 const contributorsVariants =  {
             'DESC': () => contributors.slice().sort(
                 (a, b) => b.contributions - a.contributions
@@ -65,6 +71,7 @@ const contributorsVariants =  {
                 </th>
                 <th onClick={this.handleSortingToggle}>
                     Count contributors
+                    {sortingMark}gi
                 </th>
             </tr>
             </thead>
