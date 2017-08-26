@@ -29,10 +29,17 @@ export default connect(
 
     }
 
+    componentDidMount() {
+
+        toastr.success('If u want to sort users with count of contributors, You have to click at count contributors title')
+
+    }
+
 
     handleSortingToggle = () => this.setState({
         sortingOrder: [null, 'ASC'].includes(this.state.sortingOrder) ? 'DESC' : 'ASC'
     })
+
 
 
 
@@ -54,8 +61,6 @@ export default connect(
                 (a, b) => a.contributions - b.contributions
             )
         }
-
-
 
 
         const preparedContributors = (
@@ -87,12 +92,13 @@ export default connect(
                             'Fetching' :
                             preparedContributors.map(
                                 eachContributor => (
-                                    <tr scope="row" key={eachContributor.id}>
+                                    <tr key={eachContributor.id}>
                                         <td><Link to={'/contributeprofile'}
                                                   onClick={() => contributorProfile(eachContributor)}
                                                   key={eachContributor.id}>{eachContributor.login}</Link></td>
                                         <td><img
-                                            src={eachContributor.avatar_url} className="img-thumbnail avatar img-fluid" alt=""/></td>
+                                            src={eachContributor.avatar_url} className="img-thumbnail avatar img-fluid"
+                                            alt=""/></td>
                                         <td>{eachContributor.contributions}</td>
                                     </tr>
                                 )
