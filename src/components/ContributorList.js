@@ -3,6 +3,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import {connect} from 'react-redux'
+import toastr from 'toastr'
 
 
 export default connect(
@@ -34,6 +35,7 @@ export default connect(
     })
 
 
+
     render() {
         const contributors = this.props.contributors.data
         const contributorProfile = this.props.contributorProfile
@@ -53,6 +55,9 @@ export default connect(
             )
         }
 
+
+
+
         const preparedContributors = (
             contributorsVariants[this.state.sortingOrder] ||
             (
@@ -60,6 +65,7 @@ export default connect(
             )
         )()
         return (
+
 
             <div>
                 <table className="table table-hover">

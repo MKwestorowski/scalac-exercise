@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select';
-
+import { Link } from 'react-router-dom'
 
 import {connect} from 'react-redux'
 
@@ -94,14 +94,15 @@ export default connect(
                             <th>
                                 Count contributors
                             </th>
-                            <th>Choose</th>
+                            <th>Choose <Link to={'/contributorlist'}>Back</Link></th>
+
                         </tr>
                         </thead>
                         <tbody>
                         {
                             contributor.login === null ? 'Fetching' : contributors.map(each => each.login === contributor.login ?
                                 <tr>
-                                    <td>{each.login}</td>
+                                    <td><a href={each.html_url}>{each.login}</a></td>
                                     <td><img src={each.avatar_url} className="avatar img-thumbnail" alt="avatar"/></td>
                                     <td>{each.contributions}</td>
                                     <td><Select name="form-field-name" value="one" options={options}
@@ -112,16 +113,14 @@ export default connect(
                     </table>
                 </div>
 
-                <table className="table">
+                <table className="table table-striped">
                     <thead>
                     <tr>
-                        <th>{this.state.labelName === null ? 'You must choose category' : this.state.labelName}</th>
+                        <th className="tdCenter">{this.state.labelName === null ? 'You must choose category' : this.state.labelName}</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td className="">{selectedData !== null ? selectedData.map(e => <p>{e.name}</p>) : null }</td>
-                    </tr>
+                    <tbody className="tdCenter">
+                        {selectedData !== null ? selectedData.map(e => <tr><td>{e.name}</td></tr>) : null }
                     </tbody>
                 </table>
             </div>

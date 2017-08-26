@@ -1,4 +1,31 @@
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+}
+
 .avatar {
     max-width: 200px;
     max-height: 200px;
+}
+
+
+
+.tdCenter {
+    text-align: center;
+}
+
+
+.flex-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-item-button {
+    width: 20%;
 }
