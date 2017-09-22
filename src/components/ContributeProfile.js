@@ -8,7 +8,7 @@ import './App.css'
 
 export default connect(
     state => ({
-        selectedData: state.selectingData.data.data,
+        selectedData: state.selectingData.data,
         contributorLogin: state.contributorLogin.contributorLogin.contributorLogin,
         contributors: state.contributors
 
