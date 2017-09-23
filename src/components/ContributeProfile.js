@@ -1,8 +1,9 @@
 import React from 'react'
 import Select from 'react-select';
 import {Link} from 'react-router-dom'
-
-import {connect} from 'react-redux'
+import {ListGroup, ListGroupItem} from 'react-bootstrap';
+import {List, Card, ListGroupItemHeader} from 'react-bootcards';
+import { connect } from 'react-redux'
 
 import './App.css'
 
@@ -88,19 +89,26 @@ export default connect(
                     </table>
                 </div>
 
-                <table className="table table-striped">
-                    <thead>
-                    <tr>
-                        <th className="tdCenter">{this.state.labelName === null ? 'You must choose category first' : this.state.labelName}</th>
-                    </tr>
-                    </thead>
-                    <tbody className="tdCenter">
-                    {selectedData !== null ? selectedData.map(e => <tr key={e.name || e.login}>
-                        <td>{e.name || e.login}</td>
-                    </tr>) : null }
-                    </tbody>
-                </table>
+                <List>
+                    <Card>
+                        {console.log(selectedData)}
+                    <ListGroup fill>
+                           {selectedData.length !== 0 ? selectedData.map(e =>
+                               <ListGroupItem key={e.id}href="#">
+                           <ListGroupItemHeader>{e.name || e.login}</ListGroupItemHeader>  </ListGroupItem>
+                           ) : <ListGroupItemHeader>There isnt any data to show</ListGroupItemHeader>}
+                    </ListGroup>
+                    </Card>
+                </List>
+
+
+
+
+
+
             </div>
+
+
 
 
 
