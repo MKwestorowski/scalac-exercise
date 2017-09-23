@@ -1,8 +1,8 @@
 import React from 'react'
 import Select from 'react-select';
 import {Link} from 'react-router-dom'
-import {ListGroup, ListGroupItem} from 'react-bootstrap';
-import {List, Card, ListGroupItemHeader} from 'react-bootcards';
+import {ListGroup, ListGroupItem, Panel} from 'react-bootstrap';
+import {List, ListGroupItemHeader} from 'react-bootcards';
 import { connect } from 'react-redux'
 
 import './App.css'
@@ -90,7 +90,7 @@ export default connect(
                 </div>
 
                 <List>
-                    <Card>
+                    <Panel>
                         {console.log(selectedData)}
                     <ListGroup fill>
                            {selectedData.length !== 0 ? selectedData.map(e =>
@@ -98,7 +98,7 @@ export default connect(
                            <ListGroupItemHeader>{e.name || e.login}</ListGroupItemHeader>  </ListGroupItem>
                            ) : <ListGroupItemHeader>There isnt any data to show</ListGroupItemHeader>}
                     </ListGroup>
-                    </Card>
+                    </Panel>
                 </List>
 
 
