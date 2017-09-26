@@ -3,7 +3,7 @@ import Select from 'react-select';
 import {Link} from 'react-router-dom'
 import {ListGroup, ListGroupItem, Panel} from 'react-bootstrap';
 import {List, ListGroupItemHeader} from 'react-bootcards';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 import './App.css'
 
@@ -42,17 +42,18 @@ export default connect(
             {value: `https://api.github.com/users/${contributor.login}/repos`, label: 'Repositories'},
             {value: `https://api.github.com/users/${contributor.login}/starred`, label: 'Starred'},
             {value: `https://api.github.com/users/${contributor.login}/subscriptions`, label: 'Subscriptions'},
-            {value: `https://api.github.com/users/${contributor.login}/followers` , label: 'Followers   '}
+            {value: `https://api.github.com/users/${contributor.login}/followers`, label: 'Followers   '}
         ];
 
-       const logChange = (val) => {
+        const logChange = (val) => {
             fetch(
                 val.value
             ).then(
                 response => response.json()
             ).then(
                 data => selectingData(data)
-            ); this.setState({
+            );
+            this.setState({
                 labelName: val.label
             })
         }
@@ -93,21 +94,18 @@ export default connect(
                     <div className="panel panel-default">
                         <div className="list-group">
 
-                                {selectedData.length !== 0 ? selectedData.map(e =>
-                                    <a className="list-group-item" key={e.id} href="#">
-                                        <img src="" className="img-rounded pull-left"/>
-                                        <h4 className="list-group-item-heading">{<a href={e.html_url}>{e.name || e.login}</a>}</h4> </a>
-                                ) : <h4 className="list-group-item-heading">There isnt any data to show</h4>}
+                            {selectedData.length !== 0 ? selectedData.map(e =>
+                                <a className="list-group-item" key={e.id} href="#">
+                                    <img src="" className="img-rounded pull-left"/>
+                                    <h4 className="list-group-item-heading">{<a
+                                        href={e.html_url}>{e.name || e.login}</a>}</h4></a>
+                            ) : <h4 className="list-group-item-heading">There isnt any data to show</h4>}
 
-                                <p className="list-group-item-text">Masung Corp.</p>
+                            <p className="list-group-item-text">Masung Corp.</p>
 
                         </div>
                     </div>
                 </div>
-
-
-
-
 
 
             </div>

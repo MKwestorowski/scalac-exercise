@@ -41,8 +41,6 @@ export default connect(
     })
 
 
-
-
     render() {
         const contributors = this.props.contributors.data
         const contributorProfile = this.props.contributorProfile
