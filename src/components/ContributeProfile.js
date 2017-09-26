@@ -88,18 +88,22 @@ export default connect(
                         </tbody>
                     </table>
                 </div>
+                {console.log(selectedData)}
+                <div className="bootcards-list">
+                    <div className="panel panel-default">
+                        <div className="list-group">
 
-                <List>
-                    <Panel>
-                        {console.log(selectedData)}
-                    <ListGroup fill>
-                           {selectedData.length !== 0 ? selectedData.map(e =>
-                               <ListGroupItem key={e.id}href="#">
-                           <ListGroupItemHeader>{e.name || e.login}</ListGroupItemHeader>  </ListGroupItem>
-                           ) : <ListGroupItemHeader>There isnt any data to show</ListGroupItemHeader>}
-                    </ListGroup>
-                    </Panel>
-                </List>
+                                {selectedData.length !== 0 ? selectedData.map(e =>
+                                    <a className="list-group-item" key={e.id} href="#">
+                                        <img src="" className="img-rounded pull-left"/>
+                                        <h4 className="list-group-item-heading">{<a href={e.html_url}>{e.name || e.login}</a>}</h4> </a>
+                                ) : <h4 className="list-group-item-heading">There isnt any data to show</h4>}
+
+                                <p className="list-group-item-text">Masung Corp.</p>
+
+                        </div>
+                    </div>
+                </div>
 
 
 
