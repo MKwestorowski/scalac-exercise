@@ -1,8 +1,6 @@
 import React from 'react'
 import Select from 'react-select';
 import {Link} from 'react-router-dom'
-import {ListGroup, ListGroupItem, Panel} from 'react-bootstrap';
-import {List, ListGroupItemHeader} from 'react-bootcards';
 import {connect} from 'react-redux'
 
 import './App.css'
@@ -95,8 +93,8 @@ export default connect(
                         <div className="list-group">
 
                             {selectedData.length !== 0 ? selectedData.map(e =>
-                                <a className="list-group-item" key={e.id} href="#">
-                                    <img src="" className="img-rounded pull-left"/>
+                                <a className="list-group-item" key={e.id} href={e.html_url}>
+                                    <img src={e.avatar_url  || e.owner.avatar_url} className="img-rounded pull-left" alt="avatar"/>
                                     <h4 className="list-group-item-heading">{<a
                                         href={e.html_url}>{e.name || e.login}</a>}</h4></a>
                             ) : <h4 className="list-group-item-heading">There isnt any data to show</h4>}

@@ -6,6 +6,7 @@ import './style/style.css'
 import 'react-select/dist/react-select.css';
 import '../node_modules/bootstrap-social/bootstrap-social.css'
 import './style/font-awesome-4.7.0/css/font-awesome.min.css'
+import '../node_modules/bootcards/dist/css/bootcards-desktop.css'
 
 
 import store from './store'
