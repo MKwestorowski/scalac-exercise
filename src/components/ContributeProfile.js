@@ -7,7 +7,7 @@ import './App.css'
 
 export default connect(
     state => ({
-        selectedData: state.selectingData.data.data,
+        selectedData: state.selectingData.data,
         contributorLogin: state.contributorLogin.contributorLogin.contributorLogin,
         contributors: state.contributors
 
@@ -94,7 +94,7 @@ export default connect(
                     <div className="panel panel-default">
                         <div className="list-group">
 
-                            {selectedData.length !== 0 ? selectedData.map(e =>
+                            {selectedData === null ? "You must choose category first" : selectedData.data.length !== 0 ? selectedData.data.map(e =>
                                 <a className="list-group-item" key={e.id} href={e.html_url}>
                                     <img src={e.avatar_url  || e.owner.avatar_url} className="img-rounded pull-left" alt="avatar"/>
                                     <h4 className="list-group-item-heading">{<a

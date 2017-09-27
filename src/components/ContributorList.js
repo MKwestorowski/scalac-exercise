@@ -84,6 +84,7 @@ export default connect(
                         </th>
                     </tr>
                     </thead>
+                    {console.log(preparedContributors)}
                     <tbody>
                     {
                         preparedContributors === null ?
