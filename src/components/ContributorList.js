@@ -70,7 +70,7 @@ export default connect(
         return (
 
 
-            <div>
+            <div className="container">
                 <table className="table table-hover">
                     <thead>
                     <tr>

@@ -58,7 +58,7 @@ export default connect(
 
         return (
             <div>
-                <div>
+                <div className="container">
                     <table className="table table-striped">
                         <thead>
                         <tr>
@@ -67,9 +67,10 @@ export default connect(
                                 Avatar
                             </th>
                             <th>
-                                Count contributors
+                                Count of contributors
                             </th>
-                            <th>Choose <Link to={'/contributorlist'}>Back</Link></th>
+                            <th>Choose    <Link to={'/contributorlist'}>Back</Link></th>
+
 
                         </tr>
                         </thead>
@@ -88,6 +89,7 @@ export default connect(
                     </table>
                 </div>
                 {console.log(selectedData)}
+                <div className="container">
                 <div className="bootcards-list">
                     <div className="panel panel-default">
                         <div className="list-group">
@@ -98,11 +100,9 @@ export default connect(
                                     <h4 className="list-group-item-heading">{<a
                                         href={e.html_url}>{e.name || e.login}</a>}</h4></a>
                             ) : <h4 className="list-group-item-heading">There isnt any data to show</h4>}
-
-                            <p className="list-group-item-text">Masung Corp.</p>
-
                         </div>
                     </div>
+                </div>
                 </div>
 
 
